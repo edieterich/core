@@ -149,6 +149,7 @@ static void test_imap_client_hibernate(void)
 		MAIL_STORAGE_SERVICE_FLAG_NO_LOG_INIT |
 		MAIL_STORAGE_SERVICE_FLAG_NO_CHDIR |
 		MAIL_STORAGE_SERVICE_FLAG_NO_RESTRICT_ACCESS);
+	commands_init();
 
 	const char *const input_userdb[] = {
 		"mailbox_list_index=no",
@@ -238,6 +239,7 @@ static void test_imap_client_hibernate(void)
 	test_end();
 
 	i_close_fd(&ctx.fd_listen);
+	commands_deinit();
 	mail_storage_service_deinit(&storage_service);
 }
 
